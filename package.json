@@ -1,5 +1,20 @@
 {
   "name": "com.gamejamkit.core",
   "version": "0.1.0",
-  "displayName": "Game Jam Kit"
+  "displayName": "Game Jam Kit",
+  "description": "Reusable utilities commonly used in game jams.",
+  "unity": "6000.3",
+  "license": "MIT",
+  "documentationUrl": "https://github.com/TrueVacuum/GameJamKit#readme",
+  "changelogUrl": "https://github.com/TrueVacuum/GameJamKit/blob/main/CHANGELOG.md",
+  "licensesUrl": "https://github.com/TrueVacuum/GameJamKit/blob/main/LICENSE.md",
+  "keywords": [
+    "game-jam",
+    "utilities",
+    "tools"
+  ],
+  "author": {
+    "name": "TrueVacuum",
+    "url": "https://github.com/TrueVacuum"
+  }
 }
