@@ -1,0 +1,10 @@
+{
+  "name": "GameJamKit.Editor",
+  "rootNamespace": "GameJamKit.Editor",
+  "references": [
+    "GameJamKit.Runtime"
+  ],
+  "includePlatforms": [
+    "Editor"
+  ]
+}

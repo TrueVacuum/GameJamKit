@@ -1,0 +1,9 @@
+{
+  "name": "GameJamKit.Runtime.Display.UGUI",
+  "rootNamespace": "GameJamKit.Display.UGUI",
+  "references": [
+    "GameJamKit.Runtime",
+    "UnityEngine.UI",
+    "Unity.TextMeshPro"
+  ]
+}

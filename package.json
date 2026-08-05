@@ -1,9 +1,12 @@
 {
   "name": "com.gamejamkit.core",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "displayName": "Game Jam Kit",
   "description": "Reusable utilities commonly used in game jams.",
   "unity": "6000.3",
+  "dependencies": {
+    "com.unity.ugui": "2.0.0"
+  },
   "license": "MIT",
   "documentationUrl": "https://github.com/TrueVacuum/GameJamKit#readme",
   "changelogUrl": "https://github.com/TrueVacuum/GameJamKit/blob/main/CHANGELOG.md",
@@ -16,5 +19,12 @@
   "author": {
     "name": "TrueVacuum",
     "url": "https://github.com/TrueVacuum"
-  }
+  },
+  "samples": [
+    {
+      "displayName": "Game Settings Menu",
+      "description": "A complete display and audio settings menu example.",
+      "path": "Samples~/Game Settings Menu"
+    }
+  ]
 }

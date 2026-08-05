@@ -1,0 +1,8 @@
+{
+  "name": "GameJamKit.Runtime.Audio.UGUI",
+  "rootNamespace": "GameJamKit.Audio.UGUI",
+  "references": [
+    "GameJamKit.Runtime",
+    "UnityEngine.UI"
+  ]
+}

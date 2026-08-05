@@ -1,0 +1,13 @@
+{
+  "name": "GameJamKit.EditorTests",
+  "rootNamespace": "GameJamKit.Tests",
+  "references": [
+    "GameJamKit.Runtime"
+  ],
+  "optionalUnityReferences": [
+    "TestAssemblies"
+  ],
+  "includePlatforms": [
+    "Editor"
+  ]
+}

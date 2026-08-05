@@ -1,0 +1,9 @@
+{
+  "name": "GameJamKit.Runtime.Palettes.UGUI",
+  "rootNamespace": "GameJamKit.Palettes",
+  "references": [
+    "GameJamKit.Runtime",
+    "UnityEngine.UI",
+    "Unity.TextMeshPro"
+  ]
+}

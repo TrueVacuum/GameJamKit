@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f18965b910bd40a5a6774188465d52e2, type: 3}
+  m_Name: DefaultAudioPlayback
+  m_EditorClassIdentifier: GameJamKit.Runtime::GameJamKit.Audio.AudioPlaybackProfile
+  _musicOutputGroup: {fileID: -5261473413216854021, guid: 3b57a39c43fbba34cac9e39048dea387, type: 2}
+  _soundEffectsOutputGroup: {fileID: 6532029369850733404, guid: 3b57a39c43fbba34cac9e39048dea387, type: 2}
+  _defaultMusicFadeDuration: 3
+  _initialPoolSize: 8
+  _maximumPoolSize: 24
+  _persistBetweenScenes: 1

@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 700b143ed2164efba1326d96e84d5290, type: 3}
+  m_Name: DefaultDisplaySettings
+  m_EditorClassIdentifier: GameJamKit.Runtime::GameJamKit.Display.DisplaySettingsProfile
+  _defaultMode: 3
+  _defaultWindowSize: {x: 1280, y: 720}
+  _allowWindowed: 1
+  _allowBorderlessFullscreen: 1
+  _allowExclusiveFullscreen: 1
+  _minimumResolution: {x: 960, y: 540}
+  _filterByAspectRatio: 0
+  _targetAspectRatio: {x: 16, y: 9}
+  _aspectRatioTolerance: 0.02
+  _windowedPresets:
+  - {x: 960, y: 540}
+  - {x: 1280, y: 720}
+  - {x: 1600, y: 900}
+  _playerPrefsKey: GameJamKit.DisplaySettings
