@@ -15,6 +15,7 @@ namespace GameJamKit.Editor.Palettes
         private SerializedProperty _overrideAlphaProperty;
         private SerializedProperty _alphaProperty;
         private SerializedProperty _applyOnEnableProperty;
+        private bool _showAdvancedSettings;
 
         private void OnEnable()
         {
@@ -31,7 +32,6 @@ namespace GameJamKit.Editor.Palettes
             serializedObject.Update();
 
             EditorGUI.BeginChangeCheck();
-            EditorGUILayout.PropertyField(_controllerProperty);
             DrawColorKey();
             EditorGUILayout.PropertyField(_overrideAlphaProperty);
 
@@ -41,8 +41,20 @@ namespace GameJamKit.Editor.Palettes
                 EditorGUILayout.Slider(_alphaProperty, 0f, 1f);
             }
 
-            EditorGUILayout.PropertyField(_applyOnEnableProperty);
-            EditorGUILayout.PropertyField(_fallbackColorProperty);
+            EditorGUILayout.Space();
+            _showAdvancedSettings = EditorGUILayout.Foldout(
+                _showAdvancedSettings,
+                "Advanced Settings",
+                true);
+
+            if (_showAdvancedSettings)
+            {
+                EditorGUI.indentLevel++;
+                EditorGUILayout.PropertyField(_controllerProperty);
+                EditorGUILayout.PropertyField(_applyOnEnableProperty);
+                EditorGUILayout.PropertyField(_fallbackColorProperty);
+                EditorGUI.indentLevel--;
+            }
 
             bool changed = EditorGUI.EndChangeCheck();
             serializedObject.ApplyModifiedProperties();

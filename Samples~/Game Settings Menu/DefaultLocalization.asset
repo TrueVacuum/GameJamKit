@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7770a920c9140ae812c1dbc90ae0525, type: 3}
+  m_Name: DefaultLocalization
+  m_EditorClassIdentifier: GameJamKit.Runtime::GameJamKit.Localization.LocalizationProfile
+  _defaultLocaleCode: en
+  _fallbackLocaleCode: en
+  _detectSystemLanguage: 1
+  _playerPrefsKey: GameJamKit.Localization
+  _missingTranslationFormat: '[MISSING: {0}]'
+  _defaultFont: {fileID: 0}
+  _languageMenuFont: {fileID: 0}
+  _supportedLocales:
+  - _code: en
+    _displayName: English
+    _fontOverride: {fileID: 0}
+    _systemLanguages: 0a000000
+  - _code: zh-CN
+    _displayName: "\u7B80\u4F53\u4E2D\u6587"
+    _fontOverride: {fileID: 0}
+    _systemLanguages: 28000000
+  _csvSources:
+  - {fileID: 4900000, guid: b5dc49dfd7e349bf8f85a836dd7e38fb, type: 3}

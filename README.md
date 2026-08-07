@@ -154,10 +154,46 @@ public sealed class AudioExample : MonoBehaviour
 pool, while `PlaySfxAtPoint` configures a pooled source for 3D playback at a world position.
 Clips are passed directly by the caller; the service does not require Resources or Addressables.
 
+## Localization
+
+1. Create a profile from **Assets > Create > Game Jam Kit > Localization Profile**.
+2. Add supported locale codes such as `en` and `zh-CN`, then select the default and fallback
+   locales.
+3. Create one or more UTF-8 CSV files and assign them to **CSV Sources**.
+4. Add a **Localization Manager** to the scene and assign the profile.
+5. Add **Localized Text** to TMP text objects and select a key, or use the batch authoring window.
+
+CSV files use the first column for keys and one column for each locale:
+
+```csv
+key,en,zh-CN
+settings.title,Settings,设置
+settings.apply,Apply,应用
+```
+
+Standard CSV quoting is supported, including commas, escaped quotes, and multiline text. Multiple
+CSV sources are merged in profile order, which makes it convenient to separate menu, dialogue, and
+gameplay text. When a translation is absent, the manager tries the fallback locale before showing
+the profile's missing-translation marker.
+
+Open **Tools > Game Jam Kit > Localization** to scan the current scene, match visible TMP text to
+existing translations, generate keys, bind selected text objects in a batch, and validate the CSV
+sources. The `LocalizedText` inspector also provides searchable key selection, translation previews,
+and one-click creation from its current text.
+
+### Localization fonts
+
+The localization profile can specify a default TMP font, per-locale overrides, and a language-menu
+font. The language selector may contain several writing systems at once, so its font should use TMP
+fallback font assets covering every language name. Game Jam Kit does not include font files; editor
+and development builds warn when a localized text's active TMP font cannot render required characters.
+
 ## Samples
 
 Import **Game Settings Menu** from the package details in Unity Package Manager. The sample
-contains a runnable scene, display and audio profiles, an Audio Mixer, and a palette asset.
-Open `GameSettingsMenu.unity` to see the display, aspect-ratio, volume, and audio-service setup
-working together. Imported samples are copied into the project's `Assets/Samples` folder and
-can be modified without changing the installed package.
+contains a runnable scene, display, audio, and localization profiles, an Audio Mixer, a CSV string
+table, and a palette asset. Open `GameSettingsMenu.unity` to see display, aspect-ratio, audio, and
+language settings working together. The sample intentionally contains no third-party fonts, so its
+Chinese text may show missing-glyph squares until a suitable TMP font or fallback is assigned.
+Imported samples are copied into the project's `Assets/Samples` folder and can be modified without
+changing the installed package.

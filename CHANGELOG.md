@@ -4,6 +4,26 @@ All notable changes to this package will be documented in this file.
 
 ## [Unreleased]
 
+## [0.3.0] - 2026-08-07
+
+### Added
+
+- Added CSV-driven runtime localization with multiple source-file merging and fallback locales.
+- Added saved language selection and optional system-language detection.
+- Added per-locale TMP fonts, a default font, and a language-menu font with fallback support.
+- Added localized TMP text and a uGUI language-selection menu.
+- Added localized display-mode labels to the display settings menu.
+- Added a searchable key browser, translation previews, one-click key creation, scene scanning,
+  batch binding, and CSV validation editor tools.
+- Added a configurable global missing-translation marker.
+- Added deduplicated development warnings for missing TMP font characters.
+- Added localization parser, merge, fallback, and validation tests.
+
+### Changed
+
+- Expanded the Game Settings Menu sample with English and Simplified Chinese localization.
+- Kept the sample font-independent; projects can assign their own TMP fonts and fallbacks.
+
 ## [0.2.0] - 2026-08-04
 
 ### Changed

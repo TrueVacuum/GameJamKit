@@ -1,0 +1,9 @@
+{
+  "name": "GameJamKit.Runtime.Localization.UGUI",
+  "rootNamespace": "GameJamKit.Localization.UGUI",
+  "references": [
+    "GameJamKit.Runtime",
+    "UnityEngine.UI",
+    "Unity.TextMeshPro"
+  ]
+}

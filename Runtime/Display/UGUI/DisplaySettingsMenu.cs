@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using GameJamKit.Localization;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -9,6 +10,7 @@ namespace GameJamKit.Display.UGUI
     public sealed class DisplaySettingsMenu : MonoBehaviour
     {
         [SerializeField] private DisplaySettingsManager _manager;
+        [SerializeField] private LocalizationManager _localizationManager;
         [SerializeField] private TMP_Dropdown _displayModeDropdown;
         [SerializeField] private TMP_Dropdown _resolutionDropdown;
         [SerializeField] private bool _applyImmediately;
@@ -17,6 +19,9 @@ namespace GameJamKit.Display.UGUI
 
         private readonly List<FullScreenMode> _modes = new List<FullScreenMode>();
         private readonly List<DisplayResolution> _resolutions = new List<DisplayResolution>();
+        private TMP_FontAsset _originalModeCaptionFont;
+        private TMP_FontAsset _originalModeItemFont;
+        private bool _modeFontsCached;
 
         private void OnEnable()
         {
@@ -33,6 +38,13 @@ namespace GameJamKit.Display.UGUI
 
             _manager.Initialize();
             _manager.SettingsChanged += HandleSettingsChanged;
+            ResolveLocalizationManager();
+            CacheModeFonts();
+
+            if (_localizationManager != null)
+            {
+                _localizationManager.LanguageChanged += HandleLanguageChanged;
+            }
 
             if (_displayModeDropdown != null)
             {
@@ -62,6 +74,11 @@ namespace GameJamKit.Display.UGUI
             if (_manager != null)
             {
                 _manager.SettingsChanged -= HandleSettingsChanged;
+            }
+
+            if (_localizationManager != null)
+            {
+                _localizationManager.LanguageChanged -= HandleLanguageChanged;
             }
 
             if (_displayModeDropdown != null)
@@ -156,6 +173,7 @@ namespace GameJamKit.Display.UGUI
             _displayModeDropdown.AddOptions(labels);
             int selectedIndex = _modes.IndexOf(selectedMode);
             _displayModeDropdown.SetValueWithoutNotify(Mathf.Max(0, selectedIndex));
+            ApplyLocalizedModeFonts();
             _displayModeDropdown.RefreshShownValue();
         }
 
@@ -218,6 +236,14 @@ namespace GameJamKit.Display.UGUI
             Refresh(settings);
         }
 
+        private void HandleLanguageChanged(string localeCode)
+        {
+            if (_manager != null)
+            {
+                Refresh(_manager.CurrentSettings);
+            }
+        }
+
         private FullScreenMode GetSelectedMode(FullScreenMode fallback)
         {
             if (_modes.Count == 0)
@@ -229,15 +255,89 @@ namespace GameJamKit.Display.UGUI
             return _modes[Mathf.Clamp(index, 0, _modes.Count - 1)];
         }
 
-        private static string GetModeLabel(FullScreenMode mode)
+        private void ResolveLocalizationManager()
         {
-            return mode switch
+            if (_localizationManager == null)
+            {
+                _localizationManager = LocalizationManager.Instance;
+            }
+
+            if (_localizationManager == null)
+            {
+                _localizationManager = FindFirstObjectByType<LocalizationManager>();
+            }
+        }
+
+        private void CacheModeFonts()
+        {
+            if (_modeFontsCached || _displayModeDropdown == null)
+            {
+                return;
+            }
+
+            _originalModeCaptionFont = _displayModeDropdown.captionText != null
+                ? _displayModeDropdown.captionText.font
+                : null;
+            _originalModeItemFont = _displayModeDropdown.itemText != null
+                ? _displayModeDropdown.itemText.font
+                : null;
+            _modeFontsCached = true;
+        }
+
+        private void ApplyLocalizedModeFonts()
+        {
+            if (_displayModeDropdown == null)
+            {
+                return;
+            }
+
+            CacheModeFonts();
+            TMP_FontAsset localizedFont = _localizationManager != null &&
+                                          _localizationManager.Profile != null
+                ? _localizationManager.Profile.GetFont(_localizationManager.CurrentLocaleCode)
+                : null;
+
+            if (_displayModeDropdown.captionText != null)
+            {
+                _displayModeDropdown.captionText.font = localizedFont != null
+                    ? localizedFont
+                    : _originalModeCaptionFont;
+            }
+
+            if (_displayModeDropdown.itemText != null)
+            {
+                _displayModeDropdown.itemText.font = localizedFont != null
+                    ? localizedFont
+                    : _originalModeItemFont;
+            }
+        }
+
+        private string GetModeLabel(FullScreenMode mode)
+        {
+            string fallback = mode switch
             {
                 FullScreenMode.Windowed => "Windowed",
                 FullScreenMode.FullScreenWindow => "Borderless Fullscreen",
                 FullScreenMode.ExclusiveFullScreen => "Exclusive Fullscreen",
                 _ => mode.ToString()
             };
+
+            if (_localizationManager == null)
+            {
+                return fallback;
+            }
+
+            string key = mode switch
+            {
+                FullScreenMode.Windowed => "settings.mode.windowed",
+                FullScreenMode.FullScreenWindow => "settings.mode.borderless",
+                FullScreenMode.ExclusiveFullScreen => "settings.mode.exclusive",
+                _ => string.Empty
+            };
+
+            return string.IsNullOrEmpty(key)
+                ? fallback
+                : _localizationManager.GetTextOrFallback(key, fallback);
         }
     }
 }

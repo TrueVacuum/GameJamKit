@@ -2,7 +2,9 @@
   "name": "GameJamKit.Editor",
   "rootNamespace": "GameJamKit.Editor",
   "references": [
-    "GameJamKit.Runtime"
+    "GameJamKit.Runtime",
+    "GameJamKit.Runtime.Localization.UGUI",
+    "Unity.TextMeshPro"
   ],
   "includePlatforms": [
     "Editor"

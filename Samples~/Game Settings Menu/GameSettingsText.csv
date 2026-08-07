@@ -1,0 +1,16 @@
+key,en,zh-CN
+settings.title,Settings,设置
+settings.display,Display,显示
+settings.audio,Audio,音频
+settings.master_volume,Master Volume,主音量
+settings.music_volume,Music Volume,音乐音量
+settings.sfx_volume,Sound Effects Volume,音效音量
+settings.display_mode,Display Mode,显示模式
+settings.resolution,Resolution,分辨率
+settings.language,Language,语言
+settings.mute,Mute,静音
+settings.apply,Apply,应用
+settings.reset,Reset,重置
+settings.mode.windowed,Windowed,窗口化
+settings.mode.borderless,Borderless Fullscreen,无边框全屏
+settings.mode.exclusive,Exclusive Fullscreen,独占全屏

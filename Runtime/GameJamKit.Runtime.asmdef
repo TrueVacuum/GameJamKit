@@ -1,3 +1,6 @@
 {
-  "name": "GameJamKit.Runtime"
+  "name": "GameJamKit.Runtime",
+  "references": [
+    "Unity.TextMeshPro"
+  ]
 }
